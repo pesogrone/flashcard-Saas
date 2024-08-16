@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import OpenAI from "openai";
+import { OpenAI } from "openai";
 
 const systemPrompt = `
 You are a flashcard creator. Your task is to generate a flashcard based on the given topic or content. Follow these guidelines to create a flashcard:
@@ -17,7 +17,7 @@ You are a flashcard creator. Your task is to generate a flashcard based on the g
 
 Remember, the goal is to facilitate effective learning and retention of information through the use of flashcards.
 
-Return in the following JSON format
+Return in the following JSON format:
 {
  "flashcard":[{
   "front": str,
@@ -26,11 +26,11 @@ Return in the following JSON format
 }`;
 
 export async function POST(req) {
-  const openai = OpenAI();
+  const openai = new OpenAI();
   const data = await req.text();
 
   // Use OpenAI's chat.completion.create method to generate flashcards based on the user's input
-  const completion = await openai.chat.completion.create({
+  const completion = await openai.chat.completions.create({
     messages: [
       { role: "system", content: systemPrompt }, // Provide the system prompt to guide the model
       { role: "user", content: data }, // Pass the user's input as a message
@@ -43,5 +43,5 @@ export async function POST(req) {
   const flashcards = JSON.parse(completion.choices[0].message.content);
 
   // Return the generated flashcards in JSON format
-  return NextResponse.json(flashcards.flashcard);
+  return NextResponse.json(flashcards.flashcards);
 }

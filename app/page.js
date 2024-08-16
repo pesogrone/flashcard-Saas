@@ -30,6 +30,7 @@ import {
   getDoc,
 } from "firebase/firestore";
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Home() {
   // const isSmallScreen = useMediaQuery("(max-width:600px)");
@@ -97,7 +98,13 @@ export default function Home() {
         <Typography variant="h5">
           The easiest way to create flashcards for effective learning
         </Typography>
-        <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+        <Button
+          href="/generate"
+          LinkComponent={Link}
+          variant="contained"
+          color="primary"
+          sx={{ mt: 2 }}
+        >
           Get Started
         </Button>
       </Box>
@@ -115,7 +122,12 @@ export default function Home() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button variant="contained" color="primary">
+                <Button
+                  href="/generate"
+                  LinkComponent={Link}
+                  variant="contained"
+                  color="primary"
+                >
                   Create Flashcards
                 </Button>
               </CardActions>

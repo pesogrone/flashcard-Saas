@@ -42,8 +42,18 @@ export async function POST(req) {
     success_url: `${req.headers.get('origin')}/result?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${req.headers.get('origin')}/result?session_id={CHECKOUT_SESSION_ID}`,
   };
-  const checkoutSession = await stripe.checkout.sessions.create(params);
-  return NextResponse.json(checkoutSession, {
-    status: 200,
-  });
+  try {
+    const checkoutSession = await stripe.checkout.sessions.create(params);
+    return NextResponse.json(checkoutSession, {
+      status: 200,
+    });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json(
+      { error: error.message },
+      {
+        status: 500,
+      }
+    );
+  }
 }
