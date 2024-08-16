@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image";
 import getStripe from "../utils/get-stripe";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
@@ -31,7 +33,22 @@ import Head from "next/head";
 
 export default function Home() {
   // const isSmallScreen = useMediaQuery("(max-width:600px)");
+  const upgradeHandler = async() => {
+    const checkoutSession = await fetch('/api/checkout_sessions', {
+    method: 'POST',
+    headers: { origin: 'http://localhost:3000' },
+  })
+  const checkoutSessionJson = await checkoutSession.json()
 
+  const stripe = await getStripe()
+  const {error} = await stripe.redirectToCheckout({
+    sessionId: checkoutSessionJson.id,
+  })
+
+  if (error) {
+    console.warn(error.message)
+  }
+}
   return (
     <Container maxWidth="100vw">
       <Head>
@@ -165,7 +182,7 @@ export default function Home() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" onClick={ upgradeHandler}>
                   Upgrade Now
                 </Button>
               </CardActions>
