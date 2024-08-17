@@ -16,8 +16,6 @@ import {
   useMediaQuery,
   InputAdornment,
   Container,
-  AppBar,
-  Toolbar,
   Grid,
 } from "@mui/material";
 import {
@@ -29,7 +27,6 @@ import {
   deleteDoc,
   getDoc,
 } from "firebase/firestore";
-import Head from "next/head";
 import Link from "next/link";
 
 export default function Home() {
@@ -52,38 +49,6 @@ export default function Home() {
 }
   return (
     <Container maxWidth="100vw">
-      <Head>
-        <title>Flashcards App</title>
-        <meta
-          name="description"
-          content="Generate flashcards for effective learning"
-        />
-      </Head>
-
-      <AppBar position="static">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            style={{ flexGrow: 1 }}
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
-            Flashcards App
-          </Typography>
-          <SignedOut>
-            <Button color="inherit" href="/sign-in">
-              Login
-            </Button>
-            <Button color="inherit" href="/sign-up">
-              Sign Up
-            </Button>
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-        </Toolbar>
-      </AppBar>
-
       <Box
         sx={{
           textAlign: "center",

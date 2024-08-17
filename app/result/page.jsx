@@ -12,7 +12,6 @@ import Link from "next/link";
 const Results = () => {
     const searchParams = useSearchParams();
     const session_id = searchParams.get("session_id");
-    console.log('sessionId', session_id);
     const [loading, setLoading] = useState(true);
     const [session, setSession] = useState(null);
     const [error, setError] = useState(null);

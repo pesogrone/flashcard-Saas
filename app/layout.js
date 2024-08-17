@@ -7,6 +7,8 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import Head from "next/head";
+import { AppBar,Typography, Toolbar, Button } from "@mui/material";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +19,42 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>{children}</body>
-      </html>
-    </ClerkProvider>
+      <ClerkProvider>
+          <html lang="en">
+              <body className={inter.className}>
+                      <Head>
+                          <title>Flashcards App</title>
+                          <meta
+                              name="description"
+                              content="Generate flashcards for effective learning"
+                          />
+                      </Head>
+
+                      <AppBar position="static">
+                          <Toolbar>
+                              <Typography
+                                  variant="h6"
+                                  style={{ flexGrow: 1 }}
+                                  component="div"
+                                  sx={{ flexGrow: 1 }}>
+                                  Flashcards App
+                              </Typography>
+                              <SignedOut>
+                                  <Button color="inherit" href="/sign-in">
+                                      Login
+                                  </Button>
+                                  <Button color="inherit" href="/sign-up">
+                                      Sign Up
+                                  </Button>
+                              </SignedOut>
+                              <SignedIn>
+                                  <UserButton />
+                              </SignedIn>
+                          </Toolbar>
+                      </AppBar>
+                      {children}
+              </body>
+          </html>
+      </ClerkProvider>
   );
 }

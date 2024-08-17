@@ -40,7 +40,7 @@ export async function POST(req) {
     response_format: { type: "json_object" }, // Specify the response format as JSON object
   });
 
-  console.log(completion.choices[0].message.content);
+  // console.log(completion.choices[0].message.content);
   // Parse the generated flashcards from the completion response
   const flashcards = JSON.parse(completion.choices[0].message.content);
 
