@@ -18,35 +18,26 @@ import {
   Container,
   Grid,
 } from "@mui/material";
-import {
-  collection,
-  doc,
-  getDocs,
-  setDoc,
-  query,
-  deleteDoc,
-  getDoc,
-} from "firebase/firestore";
 import Link from "next/link";
 
 export default function Home() {
-  // const isSmallScreen = useMediaQuery("(max-width:600px)");
-  const upgradeHandler = async() => {
+  const upgradeHandler = async () => {
     const checkoutSession = await fetch('/api/checkout_sessions', {
-    method: 'POST',
-    headers: { origin: 'http://localhost:3000' },
-  })
-  const checkoutSessionJson = await checkoutSession.json()
+      method: 'POST',
+      headers: { origin: 'http://localhost:3000' },
+    });
+    const checkoutSessionJson = await checkoutSession.json();
 
-  const stripe = await getStripe()
-  const {error} = await stripe.redirectToCheckout({
-    sessionId: checkoutSessionJson.id,
-  })
+    const stripe = await getStripe();
+    const { error } = await stripe.redirectToCheckout({
+      sessionId: checkoutSessionJson.id,
+    });
 
-  if (error) {
-    console.warn(error.message)
-  }
-}
+    if (error) {
+      console.warn(error.message);
+    }
+  };
+
   return (
     <Container maxWidth="100vw">
       <Box
@@ -57,10 +48,13 @@ export default function Home() {
           alignItems: "center",
           justifyContent: "center",
           height: "100vh",
+          backgroundImage: `url('/background.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
-        <Typography variant="h2"> Welcome to the Flashcards App</Typography>
-        <Typography variant="h5">
+        <Typography variant="h2" color="black"> Welcome to the Flashcards App</Typography>
+        <Typography variant="h5" color="white">
           The easiest way to create flashcards for effective learning
         </Typography>
         <Button
@@ -79,7 +73,14 @@ export default function Home() {
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
-            <Card>
+            <Card
+              sx={{
+                backgroundColor: "rgba(135, 206, 235, 0.3)", // More transparent sky blue background
+                backdropFilter: "blur(10px)", // Optional: Blur effect for background
+                borderRadius: "12px", // Optional: Rounded corners
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Optional: Subtle shadow for depth
+              }}
+            >
               <CardContent>
                 <Typography variant="h6">Create Flashcards</Typography>
                 <Typography variant="body1">
@@ -93,13 +94,20 @@ export default function Home() {
                   variant="contained"
                   color="primary"
                 >
-                  Create Flashcards
+                  Get Started
                 </Button>
               </CardActions>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Card>
+            <Card
+              sx={{
+                backgroundColor: "rgba(135, 206, 235, 0.3)", // More transparent sky blue background
+                backdropFilter: "blur(10px)", // Optional: Blur effect for background
+                borderRadius: "12px", // Optional: Rounded corners
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Optional: Subtle shadow for depth
+              }}
+            >
               <CardContent>
                 <Typography variant="h6">View Flashcards</Typography>
                 <Typography variant="body1">
@@ -107,14 +115,26 @@ export default function Home() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button variant="contained" color="primary">
-                  View Flashcards
+                <Button
+                  href="/generate"
+                  LinkComponent={Link}
+                  variant="contained"
+                  color="primary"
+                >
+                  Get Started
                 </Button>
               </CardActions>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Card>
+            <Card
+              sx={{
+                backgroundColor: "rgba(135, 206, 235, 0.3)", // More transparent sky blue background
+                backdropFilter: "blur(10px)", // Optional: Blur effect for background
+                borderRadius: "12px", // Optional: Rounded corners
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Optional: Subtle shadow for depth
+              }}
+            >
               <CardContent>
                 <Typography variant="h6">Share Flashcards</Typography>
                 <Typography variant="body1">
@@ -122,8 +142,13 @@ export default function Home() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button variant="contained" color="primary">
-                  Share Flashcards
+                <Button
+                  href="/generate"
+                  LinkComponent={Link}
+                  variant="contained"
+                  color="primary"
+                >
+                  Get Started
                 </Button>
               </CardActions>
             </Card>
@@ -136,7 +161,14 @@ export default function Home() {
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
-            <Card>
+            <Card
+              sx={{
+                backgroundColor: "rgba(135, 206, 235, 0.3)", // More transparent sky blue background
+                backdropFilter: "blur(10px)", // Optional: Blur effect for background
+                borderRadius: "12px", // Optional: Rounded corners
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Optional: Subtle shadow for depth
+              }}
+            >
               <CardContent>
                 <Typography variant="h6">Basic</Typography>
                 <Typography variant="body1">
@@ -144,14 +176,26 @@ export default function Home() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button variant="contained" color="primary">
+                <Button
+                  href="/generate"
+                  LinkComponent={Link}
+                  variant="contained"
+                  color="primary"
+                >
                   Get Started
                 </Button>
               </CardActions>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Card>
+            <Card
+              sx={{
+                backgroundColor: "rgba(135, 206, 235, 0.3)", // More transparent sky blue background
+                backdropFilter: "blur(10px)", // Optional: Blur effect for background
+                borderRadius: "12px", // Optional: Rounded corners
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Optional: Subtle shadow for depth
+              }}
+            >
               <CardContent>
                 <Typography variant="h6">Pro</Typography>
                 <Typography variant="body1">
@@ -159,14 +203,21 @@ export default function Home() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button variant="contained" color="primary" onClick={ upgradeHandler}>
+                <Button variant="contained" color="primary" onClick={upgradeHandler}>
                   Upgrade Now
                 </Button>
               </CardActions>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Card>
+            <Card
+              sx={{
+                backgroundColor: "rgba(135, 206, 235, 0.3)", // More transparent sky blue background
+                backdropFilter: "blur(10px)", // Optional: Blur effect for background
+                borderRadius: "12px", // Optional: Rounded corners
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Optional: Subtle shadow for depth
+              }}
+            >
               <CardContent>
                 <Typography variant="h6">Enterprise</Typography>
                 <Typography variant="body1">
@@ -174,8 +225,13 @@ export default function Home() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button variant="contained" color="primary">
-                  Contact Us
+                <Button
+                  href="/generate"
+                  LinkComponent={Link}
+                  variant="contained"
+                  color="primary"
+                >
+                  Get Started
                 </Button>
               </CardActions>
             </Card>
@@ -183,17 +239,20 @@ export default function Home() {
         </Grid>
       </Box>
       <Box sx={{ my: 4 }}>
-        <Typography variant="h4" align="center" gutterBottom>
-          About
-        </Typography>
-        <Typography variant="body1" align="center">
-          The Flashcards App is a simple and intuitive tool to help you create
-          flashcards for effective learning. Whether you are a student studying
-          for exams, a professional looking to enhance your skills, or someone
-          who enjoys learning new things, the Flashcards App can help you
-          create, manage, and share flashcards with ease.
-        </Typography>
-      </Box>
+  <Typography variant="h4" align="center" gutterBottom>
+    About
+  </Typography>
+  <Typography 
+    variant="body1" 
+    align="center" 
+  >
+    The Flashcards App is a simple and intuitive tool to help you create
+    flashcards for effective learning. Whether you are a student studying
+    for exams, a professional looking to enhance your skills, or someone
+    who enjoys learning new things, the Flashcards App can help you
+    create, manage, and share flashcards with ease.
+  </Typography>
+</Box>
     </Container>
   );
 }
