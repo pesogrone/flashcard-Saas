@@ -1,9 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { Container, CircularProgress, Typography, Box} from "@mui/material";
+import {
+    Container,
+    CircularProgress,
+    Typography,
+    Box,
+    Button,
+} from "@mui/material";
+import Link from "next/link";
 const Results = () => {
-    // const router = useRouter();
     const searchParams = useSearchParams();
     const session_id = searchParams.get("session_id");
     console.log('sessionId', session_id);
@@ -54,7 +60,9 @@ const Results = () => {
         );
     }
     return (
-        <Container maxWidth="sm" sx={{ textAlign: "center", mt: 4 }}>
+        <Container
+            maxWidth="sm"
+            sx={{ textAlign: "center", mt: 4, alignItems: "center" }}>
             {session.payment_status === "paid" ? (
                 <>
                     <Typography variant="h4">
@@ -68,6 +76,9 @@ const Results = () => {
                             We have received your payment. You will receive an
                             email with the order details shortly.
                         </Typography>
+                        <Button href="/" LinkComponent={Link}>
+                            Return to dashboard
+                        </Button>
                     </Box>
                 </>
             ) : (

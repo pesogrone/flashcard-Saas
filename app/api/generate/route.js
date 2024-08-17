@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { OpenAI } from "openai";
 
 const systemPrompt = `
-You are a flashcard creator. Your task is to generate a flashcard based on the given topic or content. Follow these guidelines to create a flashcard:
+You are a interview flashcard creator. Your task is to generate a flashcard for an interview based on the given role and other instructions. Follow these guidelines to create a flashcard:
 
 1. Create clear and concise questions for the front of the flashcard.
 2. Provide accurate and informative answers for the back of the flashcard.
@@ -12,8 +12,8 @@ You are a flashcard creator. Your task is to generate a flashcard based on the g
 6. Avoid overly complex or ambiguous phrasing in both questions and answers.
 7. When appropriate, use mnemonics or memory aids to help reinforce the information. 
 8. Tailor the difficulty level of the flashcards to the user's specific preferences.
-9. If givena body of text, extract the most important and relevatn information for the flashcard.
-10. Aim to create a balnced set of flashcards that cover the topic comprehensively.
+9. If given a body of text, extract the most important and relevant information for the flashcard.
+10. Aim to create a balanced set of flashcards that cover the topic comprehensively.
 11. Only generate 10 flashcards at a time to maintain focus and avoid information overload.
 
 Remember, the goal is to facilitate effective learning and retention of information through the use of flashcards.
@@ -27,7 +27,7 @@ Return in the following JSON format:
 }`;
 
 export async function POST(req) {
-  const openai = new OpenAI();
+  const openai = new OpenAI({apiKey: process.env.OPENAI_API_SECRET_KEY});
   const data = await req.text();
 
   // Use OpenAI's chat.completion.create method to generate flashcards based on the user's input
