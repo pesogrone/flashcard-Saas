@@ -121,20 +121,21 @@ export default function Generate() {
                     sx={{
                         position: "relative",
                         display: "flex",
-                        justifyContent: "flex-end",
+                        justifyContent: "",
                         mt: 2,
                     }}
                 >
                     <Button
                         variant="outlined"
-                        sx={{ color: "white", backgroundColor: "red",
+                        sx={{ color: "white", backgroundColor: "darkblue",
                           "&:hover": {
-                            backgroundColor: "darkred",
+                            color: "red"
+,                           backgroundColor: "lightblue",
                           },
                         }}
                         onClick={() => router.push('/')}
                     >
-                        Cancel
+                        Back
                     </Button>
                 </Box>
                 <Box
@@ -145,12 +146,17 @@ export default function Generate() {
                         flexDirection: "column",
                         alignItems: "center",
                     }}>
-                    <Typography variant="h4">Generate Flashcards</Typography>
+                    <Typography variant="h3">Create Your Custom Flashcards</Typography>
+                    <Typography variant="h5" align="center" gutterBottom>
+                        Enter your topics or questions below to generate personalized flashcards. 
+                        Think about interview questions, study topics, learning a language, coding development,
+                        music ,memory training, recipes, or any other content you want to master!
+                    </Typography>
                     <Paper sx={{ p: 4, width: "100%" }}>
                         <TextField
                             value={text}
                             onChange={(e) => setText(e.target.value)}
-                            label="Enter Text"
+                            label="What Would you like to learn today?"
                             fullWidth
                             multiline
                             rows={4}
@@ -165,7 +171,7 @@ export default function Generate() {
                             onClick={handleSubmit}
                             fullWidth
                         >
-                            Submit
+                            Click Here to generate your Flashcards
                         </Button>
                     </Paper>
                 </Box>
@@ -188,7 +194,7 @@ export default function Generate() {
                     </Box>
                 )}
                 {!loading && flashcards?.length > 0 && (
-                    <Box sx={{ mt: 4,  textAlign: "center", width: "100%"  }}>
+                    <Box sx={{ mt: 4,  textAlign: "center", width: "100%", }}>
                         <Typography variant="h5">Flashcards Preview</Typography>
                         <Grid container spacing={3}>
                             {flashcards.map((flashcard, index) => (
@@ -200,6 +206,7 @@ export default function Generate() {
                                             <CardContent>
                                                 <Box
                                                     sx={{
+                                                        backgroundColor: "rgb(135,206,235)",
                                                         perspective: "1000px",
                                                         "& > div": {
                                                             transition: "transform 0.6s",

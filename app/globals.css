@@ -3,3 +3,16 @@
   padding: 0;
   margin: 0;
 }
+.welcome-header {
+  text-shadow: 18px 21px 4px rgba(0, 0, 0, 0.3); /* Adds a shadow effect */
+  position: relative;
+  top: -9%; /* Adjust the top value to move it closer to the top of the page */
+}
+.welcome-ai {
+  position: relative;
+  top: -9%; /* Adjust the top value to move it closer to the top of the page */
+}
+.welcome-info {
+  position: relative;
+  top: 18%; /* Adjust the top value to move it closer to the top of the page */
+}
