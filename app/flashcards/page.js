@@ -11,6 +11,7 @@ import {
   Container,
   Grid,
   Typography,
+  Box,
 } from "@mui/material";
 
 export default function Flashcards() {
@@ -43,24 +44,31 @@ export default function Flashcards() {
   };
 
   return (
-    <Container maxWidth="100vw">
-      <Grid container spacing={3} sx={{ mt: 4 }}>
-        {flashcards.map((flashcard, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card>
-              <CardActionArea
-                onClick={() => {
-                  handleCardClick(flashcard.name);
-                }}
-              >
-                <CardContent>
-                  <Typography variant="h6">{flashcard.name}</Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <Box sx={{ backgroundColor: "skyblue", minHeight: "100vh", padding: 4 }}>
+      <Container maxWidth="100vw">
+        <Typography variant="h3" sx={{ textAlign: "center" }}>
+          Flashcards Sets
+        </Typography>
+        <Grid container spacing={3} sx={{ mt: 4, justifyContent: "center" }}>
+          {flashcards.map((flashcard, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card>
+                <CardActionArea
+                  onClick={() => {
+                    handleCardClick(flashcard.name);
+                  }}
+                >
+                  <CardContent>
+                    <Typography variant="h6" align="center">
+                      {flashcard.name}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   );
 }

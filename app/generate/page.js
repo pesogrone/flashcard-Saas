@@ -2,7 +2,7 @@
 import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { doc, collection, getDoc, setDoc, writeBatch } from "firebase/firestore";
+import { doc, collection, getDoc, writeBatch } from "firebase/firestore";
 import { db } from "@/firebase";
 import {
     Box,
@@ -73,7 +73,7 @@ export default function Generate() {
         }
 
         try {
-            const userDocRef = doc(db, "users", user.id); // Reference to the user's document
+            const userDocRef = doc(db, "users", user.id);
             const docSnap = await getDoc(userDocRef);
 
             const batch = writeBatch(db);
@@ -88,15 +88,18 @@ export default function Generate() {
             }
 
             collections.push({ name });
+
             batch.set(userDocRef, { flashcards: collections }, { merge: true });
 
             const colRef = collection(userDocRef, name);
-            flashcards.forEach((flashcard) => {
+
+            flashcards.forEach((flashcard, index) => {
                 const cardDocRef = doc(colRef);
                 batch.set(cardDocRef, flashcard);
             });
 
             await batch.commit();
+
             handleClose();
             router.push("/flashcards");
         } catch (error) {
@@ -108,8 +111,8 @@ export default function Generate() {
     return (
         <Box
             sx={{
-                backgroundColor: "skyblue", // Set the entire background color to sky blue
-                minHeight: "100vh", // Ensure the background covers the entire viewport height
+                backgroundColor: "skyblue",
+                minHeight: "100vh",
                 padding: 4,
             }}
         >
@@ -124,9 +127,9 @@ export default function Generate() {
                 >
                     <Button
                         variant="outlined"
-                        sx={{ color: "white",backgroundColor: "red", 
+                        sx={{ color: "white", backgroundColor: "red",
                           "&:hover": {
-                            backgroundColor: "darkred",  
+                            backgroundColor: "darkred",
                           },
                         }}
                         onClick={() => router.push('/')}
@@ -185,12 +188,12 @@ export default function Generate() {
                     </Box>
                 )}
                 {!loading && flashcards?.length > 0 && (
-                    <Box sx={{ mt: 4 }}>
+                    <Box sx={{ mt: 4,  textAlign: "center", width: "100%"  }}>
                         <Typography variant="h5">Flashcards Preview</Typography>
                         <Grid container spacing={3}>
                             {flashcards.map((flashcard, index) => (
                                 <Grid item xs={12} sm={6} md={4} key={index}>
-                                    <Card>
+                                    <Card sx={{ height: 300 }}>
                                         <CardActionArea
                                             onClick={() => handleCardClick(index)}
                                         >
@@ -203,7 +206,7 @@ export default function Generate() {
                                                             transformStyle: "preserve-3d",
                                                             position: "relative",
                                                             width: "100%",
-                                                            height: "400px",
+                                                            height: "250px",
                                                             boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
                                                             transform: flipped[index]
                                                                 ? "rotateY(180deg)"
@@ -219,6 +222,10 @@ export default function Generate() {
                                                             alignItems: "center",
                                                             padding: 2,
                                                             boxSizing: "border-box",
+                                                            overflow: "hidden",
+                                                            textOverflow: "ellipsis",
+                                                            whiteSpace: "pre-wrap",
+                                                            wordWrap: "break-word",
                                                         },
                                                         "& > div > div:nth-of-type(2)": {
                                                             transform: "rotateY(180deg)",

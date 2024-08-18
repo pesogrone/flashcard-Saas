@@ -218,7 +218,7 @@ export default function Home() {
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Optional: Subtle shadow for depth
               }}
             >
-              <CardContent>
+              {/* <CardContent>
                 <Typography variant="h6">Enterprise</Typography>
                 <Typography variant="body1">
                   Custom pricing for organizations and teams.
@@ -233,7 +233,7 @@ export default function Home() {
                 >
                   Get Started
                 </Button>
-              </CardActions>
+              </CardActions> */}
             </Card>
           </Grid>
         </Grid>
