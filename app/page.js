@@ -14,7 +14,6 @@ import {
   CardContent,
   CardActions,
   useMediaQuery,
-  InputAdornment,
   Container,
   Grid,
 } from "@mui/material";
@@ -141,6 +140,7 @@ export default function Home() {
           </Button>
         </Box>
       </Box>
+
       <Box sx={{ my: 4, paddingBottom: "3%" }}>
         <Typography
           variant={isSmallScreen ? "h4" : "h3"}
