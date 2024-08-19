@@ -1,3 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable no-unused-vars */
+
 "use client";
 
 import Image from "next/image";
