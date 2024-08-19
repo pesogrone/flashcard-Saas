@@ -55,13 +55,13 @@ export default function Home() {
           backgroundColor: "blue",
         }}
       >
-        <Typography variant="h1" color="rgb(127,231,248)" className="welcome-header">
+        <Typography variant="h1" color="black" className="welcome-header">
           Welcome to <span style={{ color: "yellow" }}>Interviu</span>
         </Typography>
         <Typography variant="h2" color="rgb(21,101,192)" className="welcome-ai">
           Powered By AI
         </Typography>
-        <Typography variant="h3" color="rgb(255,215,0)" className="welcome-info">
+        <Typography variant="h3" color="black" className="welcome-info">
           Your ultimate tool for creating flashcards for effective learning. Whether you're preparing for an interview, studying for exams, or organizing recipes, Interviu has got you covered!
         </Typography>
         <Button
