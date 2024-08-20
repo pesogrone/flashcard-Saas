@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 "use client"; // This makes the component a Client Component
 
 import {

@@ -1,19 +1,11 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable no-unused-vars */
-
 "use client";
 
-import Image from "next/image";
 import getStripe from "../utils/get-stripe";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+// import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import {
   Box,
-  Stack,
   Typography,
   Button,
-  Modal,
-  TextField,
   Card,
   CardContent,
   CardActions,
