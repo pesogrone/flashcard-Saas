@@ -11,7 +11,7 @@ function Footer() {
         color: "white", // Text color
         padding: "10px 0", // Padding for spacing
         textAlign: "center", // Center align text
-        bottom: 0,
+        marginTop: "auto",
         width: "100%",
       }}
     >

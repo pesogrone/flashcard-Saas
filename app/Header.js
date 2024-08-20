@@ -44,6 +44,13 @@ function Header() {
       </Button>
       <Button
         color="inherit"
+        href="/generate"
+        sx={{ fontWeight: currentPath === "/generate" ? "bold" : "normal" }}
+      >
+        Generate Flashcards
+      </Button>
+      <Button
+        color="inherit"
         href="/flashcards"
         sx={{ fontWeight: currentPath === "/flashcards" ? "bold" : "normal" }}
       >

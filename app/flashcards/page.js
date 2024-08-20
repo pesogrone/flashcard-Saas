@@ -74,21 +74,37 @@ export default function Flashcards() {
   };
 
   return (
-    <Box sx={{ backgroundColor: "skyblue", minHeight: "100vh", padding: 4 }}>
+    <Box sx={{ backgroundColor: "#ACDAFC", minHeight: "100vh", padding: 4 }}>
       <Container maxWidth="100vw">
-        <Typography variant="h3" sx={{ textAlign: "center" }}>
+        <Typography
+          variant="h3"
+          sx={{
+            textAlign: "center",
+            fontFamily: "Roboto, sans-serif",
+            fontWeight: "bold",
+            color: "#333",
+          }}
+        >
           Your Flashcards Sets
         </Typography>
         <Button
           href="/generate"
           variant="contained"
-          sx={{ 
-            display: "", 
-            margin: "20px auto", 
-            backgroundColor: "primary.main", 
-            color: "white", 
-            fontWeight: "bold", 
-            fontSize: "1rem" 
+          sx={{
+            display: "block",
+            margin: "20px auto",
+            backgroundColor: "#1976d2",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: "1rem",
+            padding: "10px 20px",
+            borderRadius: "8px",
+            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+            textAlign: "center",
+            "&:hover": {
+              backgroundColor: "#1565c0",
+              boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.15)",
+            },
           }}
         >
           CREATE A NEW SET
@@ -103,15 +119,18 @@ export default function Flashcards() {
                   }}
                 >
                   <CardContent>
-                    <Typography 
-                      variant="h4" 
-                      align="center" 
-                      sx={{ 
-                        backgroundColor: "rgb(135,206,235)", 
-                        padding: "10px", 
+                    <Typography
+                      variant="h4"
+                      align="center"
+                      sx={{
+                        backgroundColor: "#90caf9",
+                        padding: "10px",
+                        fontFamily: "Roboto, sans-serif",
+                        fontWeight: "bold",
+                        color: "#333",
                       }}
                     >
-                      {flashcard.name}
+                      {flashcard.name.toUpperCase()}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -119,16 +138,16 @@ export default function Flashcards() {
                   variant="contained"
                   color="secondary"
                   onClick={() => handleOpenDialog(index)}
-                  sx={{ 
-                    display: "block", 
-                    margin: "-10px auto 0 auto", 
-                    backgroundColor: "blue", 
-                    fontSize: "0.75rem", 
+                  sx={{
+                    display: "block",
+                    margin: "-10px auto 0 auto",
+                    backgroundColor: "#d32f2f",
+                    fontSize: "0.75rem",
                     padding: "2px 6px",
-                    '&:hover': {
-                      backgroundColor: "yellow",
-                      color: "black"
-                    }
+                    "&:hover": {
+                      backgroundColor: "#e57373",
+                      color: "black",
+                    },
                   }}
                 >
                   Delete Set
@@ -138,14 +157,12 @@ export default function Flashcards() {
           ))}
         </Grid>
       </Container>
-      <Dialog
-        open={open}
-        onClose={handleCloseDialog}
-      >
+      <Dialog open={open} onClose={handleCloseDialog}>
         <DialogTitle>Confirm Deletion</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to delete this flashcard set? This action cannot be undone.
+            Are you sure you want to delete this flashcard set? This action
+            cannot be undone.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
