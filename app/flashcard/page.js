@@ -25,8 +25,6 @@ export default function Flashcard() {
   const [showMiniatures, setShowMiniatures] = useState(false);
   const searchParams = useSearchParams();
   const search = searchParams.get("id");
-  const [loading, setLoading] = useState(false);
-  const [text] = useState("");
   const isSmallScreen = useMediaQuery("(max-width:600px)");
   const isMediumScreen = useMediaQuery("(max-width:900px)");
 

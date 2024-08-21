@@ -53,7 +53,7 @@ export default function Home() {
           justifyContent: "flex-start",
           height: "100vh",
           width: "100%",
-          backgroundImage: `url('/Background.jpg')`,
+          backgroundImage: `url('/background.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

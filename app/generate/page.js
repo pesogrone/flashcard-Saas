@@ -24,7 +24,7 @@ import {
 } from "@mui/material";
 
 export default function Generate() {
-  const { isLoaded, isSignedIn, user } = useUser();
+  const { isSignedIn, user } = useUser();
   const [flashcards, setFlashcards] = useState([]);
   const [flipped, setFlipped] = useState([]);
   const [text, setText] = useState("");
@@ -93,7 +93,7 @@ export default function Generate() {
 
       const colRef = collection(userDocRef, name);
 
-      flashcards.forEach((flashcard, index) => {
+      flashcards.forEach((flashcard) => {
         const cardDocRef = doc(colRef);
         batch.set(cardDocRef, flashcard);
       });
